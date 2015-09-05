@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14412422070000" configfile="/Login-web/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="admin.xhtml" x="122" y="562" id="pf14412449983416" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" path="/admin.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="welcome.xhtml" x="122" y="946" id="pf14412449983457" referenceLink="//@navigationRule.1/@fromViewId|" path="/welcome.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="paginas/index.xhtml" id="pf14414050782153" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" outlinks="pf14414050782154" inlinks="pf14414050879256" path="paginas/index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="paginas/welcome.xhtml" id="pf14414050782155" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf14414050879256" inlinks="pf14414050782154" path="paginas/welcome.xhtml"/>
+  <links id="pf14414050782154" target="pf14414050782155" source="pf14414050782153" outcome="loginOk" fromaction="#{loginBB.submit}"/>
+  <links id="pf14414050879256" target="pf14414050782153" source="pf14414050782155" outcome="Salir" fromaction="#{loginBB.logout}"/>
+</pageflow:Pageflow>
