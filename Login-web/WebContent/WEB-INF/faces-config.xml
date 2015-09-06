@@ -12,24 +12,37 @@
 	</managed-bean>
 	
 	<navigation-rule>
-		<from-view-id>paginas/index.xhtml</from-view-id>
+		<from-view-id>/paginas/index.xhtml</from-view-id>
 		<navigation-case>
-			<from-action>#{loginBB.submit}</from-action>
+			<from-action>#{loginBB.ingresar}</from-action>
 			<from-outcome>loginOk</from-outcome>
-			<to-view-id>paginas/welcome.xhtml</to-view-id>
+			<to-view-id>/paginas/welcome.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
-			<from-action>#{loginBB.submit}</from-action>
+			<from-action>#{loginBB.ingresar}</from-action>
 			<from-outcome>loginError</from-outcome>
-			<to-view-id>paginas/index.xhtml</to-view-id>
+			<to-view-id>/paginas/index.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{loginBB.registrarse}</from-action>
+			<from-outcome>Registrarse</from-outcome>
+			<to-view-id>/paginas/Registro.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	<navigation-rule>
-		<from-view-id>paginas/welcome.xhtml</from-view-id>
+		<from-view-id>/paginas/welcome.xhtml</from-view-id>
 		<navigation-case>
 			<from-action>#{loginBB.logout}</from-action>
 			<from-outcome>Salir</from-outcome>
-			<to-view-id>paginas/index.xhtml</to-view-id>
+			<to-view-id>/paginas/index.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/paginas/Registro.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{loginBB.altaUsr}</from-action>
+			<from-outcome>altaOk</from-outcome>
+			<to-view-id>/paginas/welcome.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 </faces-config>

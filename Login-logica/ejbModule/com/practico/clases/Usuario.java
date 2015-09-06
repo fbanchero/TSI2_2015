@@ -1,5 +1,7 @@
 package com.practico.clases;
 import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -9,8 +11,15 @@ import javax.persistence.*;
 @Table(name = "usuarios")
 public class Usuario implements Serializable {
 	
+//	@Id	
+//  @Column(name = "CODIGO")
+//	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Usuario_SEQ")
+//	@SequenceGenerator(name = "Usuario_SEQ", sequenceName = "Usuario_SEQ", allocationSize = 1)
+//	private int codigo;
+	
 	@Id	
-    @Column(name = "CODIGO")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "CODIGO")
 	private int codigo;
 	
     @Column(name = "NICK")
@@ -25,17 +34,36 @@ public class Usuario implements Serializable {
     @Column(name = "NOMBRE")
 	private String nombre;
     
+    @Version
+    private int version;
+    
+    @OneToMany (fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
+    @JoinTable (name = "Usuarios_telefonos",
+    		joinColumns = @JoinColumn(name = "codUsuario"),
+    		inverseJoinColumns = @JoinColumn(name = "codTelefono"))
+    private List<Telefono> telefonos;
+    
+    @ManyToOne
+    @JoinColumn(name = "codDireccion")
+    private Direccion direccion;
+    
+    @ManyToMany
+    @JoinTable (name = "Usuarios_Materias", joinColumns = @JoinColumn(name = "codUsuario"), inverseJoinColumns = @JoinColumn(name = "codMateria"))
+    private List<Materia> materias;
+    
     public Usuario() {
 		super();
 	}
 
 	public Usuario(String nick, String password, String mail,
-			String nombre) {
+			String nombre, Direccion direccion) {
 		super();
 		this.nick = nick;
 		this.password = password;
 		this.mail = mail;
 		this.nombre = nombre;
+		this.telefonos = new LinkedList<Telefono>();
+		this.direccion = direccion;
 	}
 
 	public int getCodigo() {
@@ -76,6 +104,38 @@ public class Usuario implements Serializable {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public List<Telefono> getTelefonos() {
+		return telefonos;
+	}
+
+	public void setTelefonos(List<Telefono> telefonos) {
+		this.telefonos = telefonos;
+	}
+
+	public Direccion getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(Direccion direccion) {
+		this.direccion = direccion;
+	}
+
+	public List<Materia> getMaterias() {
+		return materias;
+	}
+
+	public void setMaterias(List<Materia> materias) {
+		this.materias = materias;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
 	}
 	
 }

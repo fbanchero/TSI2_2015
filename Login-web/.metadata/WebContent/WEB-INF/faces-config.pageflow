@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14412422070000" configfile="/Login-web/WebContent/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="admin.xhtml" x="122" y="562" id="pf14412449983416" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" path="/admin.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="welcome.xhtml" x="122" y="946" id="pf14412449983457" referenceLink="//@navigationRule.1/@fromViewId|" path="/welcome.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="paginas/index.xhtml" id="pf14414050782153" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" outlinks="pf14414050782154" inlinks="pf14414050879256" path="paginas/index.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="paginas/welcome.xhtml" id="pf14414050782155" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf14414050879256" inlinks="pf14414050782154" path="paginas/welcome.xhtml"/>
-  <links id="pf14414050782154" target="pf14414050782155" source="pf14414050782153" outcome="loginOk" fromaction="#{loginBB.submit}"/>
-  <links id="pf14414050879256" target="pf14414050782153" source="pf14414050782155" outcome="Salir" fromaction="#{loginBB.logout}"/>
+  <nodes xsi:type="pageflow:PFPage" name="admin.xhtml" x="122" y="178" id="pf14412449983416" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" path="/admin.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="welcome.xhtml" x="122" y="562" id="pf14412449983457" referenceLink="//@navigationRule.1/@fromViewId|" path="/welcome.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="paginas/index.xhtml" x="338" y="946" id="pf14414050782153" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf144154913403111 pf144154913403112 pf144154913403113" inlinks="pf144154913403114 pf144154913403112" path="/paginas/index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="paginas/welcome.xhtml" id="pf14415491030149" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" outlinks="pf144154913403114" inlinks="pf144154913403115 pf144154913403113" path="/paginas/welcome.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="paginas/Registro.xhtml" id="pf144154913403116" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf144154913403115" path="/paginas/Registro.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="paginas/Registro" id="pf144154913403117" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" inlinks="pf144154913403111" path="/paginas/Registro.jsp"/>
+  <links id="pf144154913403115" target="pf14415491030149" source="pf144154913403116" outcome="altaOk" fromaction="#{loginBB.altaUsr}"/>
+  <links id="pf144154913403114" target="pf14414050782153" source="pf14415491030149" outcome="Salir" fromaction="#{loginBB.logout}"/>
+  <links id="pf144154913403111" target="pf144154913403117" source="pf14414050782153" outcome="Registrarse" fromaction="#{loginBB.registrarse}"/>
+  <links id="pf144154913403112" target="pf14414050782153" source="pf14414050782153" outcome="loginError" fromaction="#{loginBB.ingresar}"/>
+  <links id="pf144154913403113" target="pf14415491030149" source="pf14414050782153" outcome="loginOk" fromaction="#{loginBB.ingresar}"/>
 </pageflow:Pageflow>

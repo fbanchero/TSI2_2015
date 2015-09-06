@@ -18,7 +18,8 @@
 			<h:inputSecret id="pass" value="#{loginBB.pass}"></h:inputSecret>
 		</h:panelGrid>
 		<h:outputText value="Usuario y/o contraseña incorrectos" rendered="#{loginBB.mostrarAdvertencia}"></h:outputText>
-		<h:commandButton value="Aceptar" action="#{loginBB.submit}"></h:commandButton>
+		<h:commandButton value="Ingresar" action="#{loginBB.ingresar}"></h:commandButton>
+		<h:commandButton value="Registrarse" action="#{loginBB.registrarse}"></h:commandButton>
 	</h:form>
 </h:body>
 </html>
